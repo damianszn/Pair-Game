@@ -1,5 +1,12 @@
 # Jeu des paires
 
+It's a small game i coded in Javascript with an HTML as visual support. I challenged myself to do it only with the things i learned and remembered until now.
+
+The game is working, be careful to not click too fast on different cards, if you click between animations it can cause a bug (setIntervals messing up).
+
+---
+Here is the readme provided by my Becode coaches :
+
 ## Règles
 L'espace de jeu est composé de cartes retournées face cachées. Le joueur retourne 2 cartes. Si elles sont identiques alors elles restent visibles, sinon elles reviennent en face cachée.
 
