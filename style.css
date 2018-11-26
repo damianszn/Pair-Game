@@ -1,0 +1,44 @@
+body{
+    background-color:burlywood;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+#playarea{
+    width:70vw;
+    height:80vh;
+    margin:auto;
+
+    background-color: lightgray;
+    border:10px ridge beige;
+    border-radius:15px;
+}
+
+.images{
+    height:25vh;
+    width:auto;
+}
+
+td{
+    transform-style: preserve-3d;
+    transition: all 1.0s linear;
+}
+
+img{
+    border:3px ridge beige;
+}
+
+p{
+    padding:5px;
+}
+
+footer{
+    margin:auto;
+    width:70vw;
+    height:15vh;
+   
+    background-color: lightgray;
+    border:10px ridge beige;
+    border-radius: 15px;
+}
