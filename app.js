@@ -1,5 +1,5 @@
 var message=document.getElementById('message');
-message.innerHTML="Click on any picture to turn it. Try to click on another one and find a pair ! Don't click too fast tho";
+message.innerHTML="Click on any picture to turn it. Try to click on another one and find a pair !";
 
 var imagesTab = [
     "<img id='1' class='images' src='img/img1.jpg'></img>",
@@ -32,12 +32,11 @@ var backside = function(spotId){
     takes += 1;
     var spotById = document.getElementById('image'+spotId);
     spotById.style = "transform: rotateY(180deg)";
-    spotById.removeEventListener('click', backside);
     var numId = parseInt(spotId);
     numId -= 1;
     var imgId = parseInt(imagesTab[numId].substr(9,2));
-    openedSpots += 1;
     setTimeout(function(){
+        openedSpots += 1;
         spotById.innerHTML = imagesTab[numId]; 
         testSpots(openedSpots,imgId,spotId);
     }, 500);
@@ -52,7 +51,7 @@ var testSpots = function(openedSpots,imgId,spotId) {
     else if(openedSpots === 2){
         setTimeout(function(){
             compare(imgId,spotId,imgTemp,spotTemp);
-        }, 2000);
+        }, 1500);
     }
 };
 
@@ -66,7 +65,6 @@ var compare = function(imgId,spotId,imgTemp,spotTemp) {
     else{
         var spotById = document.getElementById('image'+spotId);
         spotById.style = "transform: rotateY(360deg)";
-        spotById.addEventListener('click', backside);
         setTimeout(function(){
             spotById.innerHTML = "<img class='images' src='backcard.png' onclick='backside("+spotId+")'></img>";
         }, 500);
@@ -75,13 +73,29 @@ var compare = function(imgId,spotId,imgTemp,spotTemp) {
             spotByIdSecond.innerHTML = "<img class='images' src='backcard.png' onclick='backside("+spotTemp+")'></img>";
         }, 500);
         spotByIdSecond.style = "transform: rotateY(360deg)";
-        spotByIdSecond.addEventListener('click', backside);
         openedSpots = 0;
     }
 };
 
 var testwin = function(good,takes) {
     if(good===7){
-        message.innerHTML="You won, congratulations ! You did it in "+takes+" takes.";
+        message.innerHTML="You won, congratulations ! You did it in "+takes+" takes. <br>Do you want to play again ? <a style='color:blue;cursor:pointer;' onclick='reset()'>Click here</a> then.";
     }
+};
+
+var reset = function(){
+    openedSpots =0;
+    imgTemp =0;
+    spotTemp =0;
+    good =0;
+    takes =0;
+    message.innerHTML="Here you go again.";
+    for(i=0;i<15;i++){
+        var spot = document.getElementById('image'+(i+1));
+        spot.style = "transform: rotateY(360deg)";
+        spot.innerHTML = "<img class='images' src='backcard.png' onclick='backside("+(i+1)+")'></img>";
+    }
+    imagesTab.sort(function(){
+        return 0.5 - Math.random();
+    });
 };
