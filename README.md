@@ -1,4 +1,4 @@
-# Jeu des paires
+# Pair Game
 
 It's a small game i coded in Javascript with an HTML as visual support. I challenged myself to do it only with the things i learned and remembered until now.
 
